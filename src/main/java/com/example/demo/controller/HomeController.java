@@ -1,13 +1,26 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.security.Principal;
 
 @Controller
 public class HomeController {
-
-    @GetMapping
+    @RequestMapping("/")
     public String home() {
-        return "home.jsp";
+        return "home";
+    }
+
+/*    @RequestMapping("/user/show")
+    public String show() {
+        return "users";
+    }*/
+
+    @RequestMapping("/user/show")
+    @ResponseBody
+    public Principal users(Principal principal) {
+        return principal;
     }
 }
